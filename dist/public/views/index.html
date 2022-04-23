@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>Agario3D</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:title" content="Agario-play.com">
+    <meta name="description" content="On Agario-play.com you can play online agar.io unblocked at school with different game mods such as agario pvp, agario private server and teams. Use special agario skins for free!">
+    <meta property="og:description" content="On Agario-play.com you can play online agar.io with different game mods such as agario pvp, private server and teams. Use special agario skins for free! Have fun with Agar!">
+    <meta property="og:image" content="https://agario-play.com/img/1200x630.jpg?v1.7.0 ">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <link href="/ap.ico" rel="icon">
+    <link id="favicon" rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA0pJREFUWEfFVz1oFFEQ/ubtJRiNiQSCJrngXVTQnCKINtoIoqDYCBLRXgUrLQQFbWwUbAQL0dJC8Qc7YyE2QmwUVDRRMOYOTHKKELxLNCbuvpG5ZO/23u1mb5NFt1nYN+/N92a++WaW8J8fiup/sCvdpzS2ApzSoLWynwhvifFDK7zJjGUfRDmzLgCfutevs237kgYdBLglzAEB/Q7RtS3j2ad12AabDCaTbcpJXNfAsbCD/NdpwAKd3pgfeRW0PzACHzt6tjvQjwB0L865u4uKUDieGcve9zvHF8CHrtQJremqX7gtEBqJkCCgAXPbZ8HQDMwwwwH74lUKJzeN5W6ZizUA5m/+0jQUxyuVwjJamDazzJhiDXnXPIqOmJGoOm3OOT8zb76cFFqUipSJaWYUtGPsoWJjwtq24cvw53KCvBbvO1IDBOz0fmtVFppCbh2ETKIwYYAgUnd7x0fKpC5HwC/0S3HugvrJGpNaV2G0oHa4lVEGMNTZc4dZH3UthWhtyooU9iBjiYLBiSeZfO5AScTcTUNr0gWmisiIcwERx1ObCipm8tnWMoC5ssNN15kwvt2K5/bumd8cKdBKZWiifaKUpSsOdqQuAzjnGi+G9WGRKmiNaa7iwpVMPnfeBdAPYL97yCplhdZ7mENzXbRhqpqMFQBm+cWZfxfIb5Z2WdEFBl5szud2lSLwLwCYRKwCYJZgHPUflgIi3Ogdz53yJWETKbRGlN4wThS1xq9AEnal+6D5XkWfCatjLsPvjlPdKecbU6AQxZkGM//EVOz96hEiubnJA4sI7TFJcc3tgVoplrlv1raHvblsVgrNFK0Nm1zwyT18m5FfFOTbUlLhNxMEtuOSJCeTbWQ3ZL1NSb7LJLQiYiR8pBeSe078SWdGRycqhDdiFjSSSWeUdIR1SFG8SdZwjJFMnCuiPeaEvMBQWumOXowJotKE5A6ksiY9TgbSGXCN41LLZSqSxWfrGkpdZ+8603stjYdmOsIEx1xnotEE06Ggf4MFJw6pjBnbvm3OifWCELllZV/w5tzcW9fII9FQzGe8LTsIhIQbih43WOqid/oNtK/3Nm6VKE4cZla7NevSj6mHzc+h6HXQH1AsAKKArdf2LwaXhTDEQiJmAAAAAElFTkSuQmCC">
+    <link rel="canoncial" href="https://preview.keenthemes.com/metronic8">    
+    <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link id="fontAwesome" rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" media="all">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+</head>
+
+<body>
+    <div class="contianer-fluid" id="content">
+        <div id="img_container" style="height: auto;min-height: 100%; width: 100%;">
+            <div class="img_box">
+                <div class="tmp_effect1"></div>
+                <div class="tmp_effect2"></div>
+                <div class="tmp_effect3"></div>
+                <div id="view_users">
+                    <table >
+                        <thead style="display: none;">
+                            <th width=""70%></th>
+                            <th width=""30%></th>
+                        </thead>
+                        <tbody id="player_lists">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="login_widget">
+                    <label id="title_bar">AGARIO 3D</label>    
+                    <input id="input_name" type="text" maxlength="30" required="" placeholder="input your name!" value="player">
+                    <button id="start_game" onclick="startGame()">START GAME</button>
+    
+                </div>
+            </div>
+            
+            
+        </div>
+        
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+        var socket = io.connect();
+        var table_body =$('#player_lists'); 
+        socket.on("connect",function(){
+            setInterval(() => {
+                socket.emit("index_connect");
+            }, 33);
+            socket.on("AllPlayers",function(players){
+                updateTable(players);
+                
+            });
+            socket.on("startGame",(data)=>{
+                if(data.existFlag){
+                    alert("The name exists already!");
+                    return;
+                }
+                {
+                    document.cookie = "username=" + $("#input_name").val();
+                    document.location.pathname = "/start";        
+                    
+                }
+            })
+        })
+        function updateTable(players){
+            var html="";
+            for(var index  in players){
+                var player = players[index];
+                html+="<tr>";
+
+                html+="<td width='70%'>";
+                if(player.username.trim()==""){
+                    html+="unkown";
+                }else{
+                    html+=player.username;
+                }
+
+                html+="</td><td width='30%'>"+Math.floor(player.r)+"</td>";
+                html+="</tr>";
+            }
+            
+            table_body.html(html);
+        }
+        function orderPlayers(players){
+            var player_r_list =[];
+            for(var index in players){
+                player_r_list[index]=players[index];
+            } 
+            player_r_list.sort((a,b)=>{
+                return (a.r-b.r<0);
+            });
+            updateTable(player_r_list);
+        }
+        function startGame(){
+            socket.emit("startGame",$('#input_name').val());
+        }
+
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            document.cookie = "username=" + profile.getName();
+            //setCookie("username", profile.getName(), 100);
+            window.location.pathname = 'dist/public/game.html'
+        }
+    </script>
+</body>
+<!-- JavaScript Bundle with Popper -->
+</html>
