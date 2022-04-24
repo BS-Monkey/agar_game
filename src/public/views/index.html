@@ -31,16 +31,16 @@
                 <div class="tmp_effect1"></div>
                 <div class="tmp_effect2"></div>
                 <div class="tmp_effect3"></div>
-                <div id="view_users">
-                    <table >
-                        <thead style="display: none;">
-                            <th width=""70%></th>
-                            <th width=""30%></th>
-                        </thead>
-                        <tbody id="player_lists">
-                            
-                        </tbody>
-                    </table>
+                <div id="top_side">
+                    <div class="title">
+                        <h3 class="title_bar" id="player_number" ></h3>
+                        <h3 class="title_bar">
+                            Players
+                        </h3>
+                    </div>
+                    <div class="players_body" id="playerslist">
+                        
+                    </div>
                 </div>
                 <div class="login_widget">
                     <label id="title_bar">AGARIO 3D</label>    
@@ -67,7 +67,7 @@
                 socket.emit("index_connect");
             }, 33);
             socket.on("AllPlayers",function(players){
-                updateTable(players);
+                drawPlayerList(players);
                 
             });
             socket.on("startGame",(data)=>{
@@ -82,35 +82,51 @@
                 }
             })
         })
-        function updateTable(players){
-            var html="";
-            for(var index  in players){
-                var player = players[index];
-                html+="<tr>";
-
-                html+="<td width='70%'>";
-                if(player.username.trim()==""){
-                    html+="unkown";
-                }else{
-                    html+=player.username;
-                }
-
-                html+="</td><td width='30%'>"+Math.floor(player.r)+"</td>";
-                html+="</tr>";
-            }
-            
-            table_body.html(html);
-        }
-        function orderPlayers(players){
-            var player_r_list =[];
-            for(var index in players){
-                player_r_list[index]=players[index];
-            } 
-            player_r_list.sort((a,b)=>{
-                return (a.r-b.r<0);
+        function drawPlayerList(players) {
+            var html = "";
+            var players = players;
+            var sorted = Object.keys(players).sort(function (a, b) {
+                return players[b].model.getRadius() - players[a].model.getRadius();
             });
-            updateTable(player_r_list);
+            for (var i = 0; i < 10; i++) {
+                if (sorted[i] === undefined)
+                    break;
+                var username = players[sorted[i]].username;
+                var radius = players[sorted[i]].r;
+                html += '<div class="plyer_info">' + username + '-' + radius.toFixed(2) + '</div>';
+            }
+            document.getElementById("playerslist").innerHTML = html;
+            document.getElementById("player_number").innerText = sorted.length.toString();
         }
+        // function updateTable(players){
+        //     var html="";
+        //     for(var index  in players){
+        //         var player = players[index];
+        //         html+="<tr>";
+
+        //         html+="<td width='70%'>";
+        //         if(player.username.trim()==""){
+        //             html+="unkown";
+        //         }else{
+        //             html+=player.username;
+        //         }
+
+        //         html+="</td><td width='30%'>"+Math.floor(player.r)+"</td>";
+        //         html+="</tr>";
+        //     }
+            
+        //     table_body.html(html);
+        // }
+        // function orderPlayers(players){
+        //     var player_r_list =[];
+        //     for(var index in players){
+        //         player_r_list[index]=players[index];
+        //     } 
+        //     player_r_list.sort((a,b)=>{
+        //         return (a.r-b.r<0);
+        //     });
+        //     updateTable(player_r_list);
+        // }
         function startGame(){
             socket.emit("startGame",$('#input_name').val());
         }

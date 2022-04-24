@@ -151,7 +151,7 @@ function heartbeat(): void {
                 // Eat food
                 foodEatenIds.push(food.id);
                 foodEatenToRemoveIndices.push(index);
-                players[id].r += food.r * 0.05;
+                players[id].r += food.r * 0.1;
             }
         }
         for (var index = 0; index < foodEatenToRemoveIndices.length; index++) {
@@ -187,7 +187,7 @@ function heartbeat(): void {
         minimalPlayers[id] = players[id].getMinimalData();
     }
     var foodCreated = [];
-    while (foodBlobs.length < 1000) {
+    while (foodBlobs.length < 200) {
         var x = (Math.random() * 1600) - 800;
         var z = (Math.random() * 1600) - 800;
         // TODO: Generate away from players

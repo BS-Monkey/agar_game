@@ -26,10 +26,69 @@
             height: 100%;
             touch-action: none;
         }
+        #top_side{
+            position: fixed;
+            right: 2vh;
+            top: 5vh;
+            height: 30vh;
+            width: 20vh;
+            /* border: 1px solid white; */
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        #top_side .title_bar{
+            font-size: 2.2vh;
+            color: white;
+            text-shadow: 0 0 0.3vh #000000;
+            margin: 0.5vh;
+        }
+        #top_side .title{
+            background: rgba(255,255,255,0.95);
+            border: 4px solid rgba(22,22,22,0.8);
+            display: flex;
+            justify-content: center;
+
+        }
+        
+        #top_side .players_body{
+            background: rgba(92,92,92,0.9);
+            min-height: 100%;
+            border: 5px solid rgba(32,32,32,0.9);
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-top: 0px;
+            display: flex;
+            padding: 5px;
+            flex-direction: column;
+        }
+        #top_side .players_body>.plyer_info{
+            height: 3vh;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            color: white;
+            text-shadow: 0 0 0.3vh #000000;
+            margin: 0.2vh 0;
+            display: flex;
+            justify-content: center;
+            font-size: 2vh;
+        }
+        
     </style>
 </head>
 
 <body>
+    <div id="top_side">
+        <div class="title">
+            <h3 class="title_bar" id="player_number" ></h3>
+            <h3 class="title_bar">
+                Players
+            </h3>
+        </div>
+        <div class="players_body" id="playerslist">
+            
+        </div>
+    </div>
     <canvas id="renderCanvas"></canvas>
     <script language="javascript" type="module" src="./main.js"></script>
 </body>

@@ -88,7 +88,8 @@ class Game {
             this._players[this._socket.id] = this._player;
         });
         this._socket.on('init', (blobs) => {
-            this._loadingGameText.text = "Loading in " + blobs.length + " objects. Please wait.";
+            this._loadingGameText.text = "Loading...";
+            // this._loadingGameText.text = "Loading in " + blobs.length + " objects. Please wait.";
             this._textHandle.addControl(this._loadingGameText);
             // Spawn all food at once.
             setTimeout(() => {
@@ -154,7 +155,24 @@ class Game {
                     delete this._players[id];
                 }
             }
+            this.drawPlayerList();
         });
+    }
+    drawPlayerList() {
+        var html = "";
+        var players = this._players;
+        var sorted = Object.keys(players).sort(function (a, b) {
+            return players[b].model.getRadius() - players[a].model.getRadius();
+        });
+        for (var i = 0; i < 10; i++) {
+            if (sorted[i] === undefined)
+                break;
+            var username = this._players[sorted[i]].username;
+            var radius = this._players[sorted[i]].model.getRadius();
+            html += '<div class="plyer_info">' + username + '-' + radius.toFixed(2) + '</div>';
+        }
+        document.getElementById("playerslist").innerHTML = html;
+        document.getElementById("player_number").innerText = sorted.length.toString();
     }
     doRender() {
         // Run the render loop.
