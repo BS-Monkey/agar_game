@@ -19,4 +19,4 @@ A 3D multiplayer version of the popular [Agar.io](https://agar.io/) game.
 ![](https://github.com/JeroenVerstraelen/Agario3D/blob/master/images/dev3.png)
 ![](https://github.com/JeroenVerstraelen/Agario3D/blob/master/images/dev4.png)
 
-2022.06.05
+2022.06.07
